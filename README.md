@@ -1,7 +1,7 @@
 
 # Godot LM Studio Api Integration Godot
 
-This plugin integraties LM Studio's Server APIs allowing easy node based access to AI Tools within your Godot projects.
+This plugin integrates LM Studio's Server APIs allowing easy node based access to AI Tools within your Godot projects.
 
 ## Table of Contents
 1. [Features](#features)
