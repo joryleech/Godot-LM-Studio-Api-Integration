@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6pfk4ypdh635"]
+
+[ext_resource type="Script" path="res://sample/Embeddings/embeddings_demo.gd" id="1_67ymt"]
+[ext_resource type="Script" path="res://sample/Models/response_label.gd" id="2_iew7s"]
+[ext_resource type="Script" path="res://addons/lm_studio_api/lib/embeddings.gd" id="2_vv2w6"]
+
+[node name="Embeddings Demo" type="VBoxContainer"]
+script = ExtResource("1_67ymt")
+metadata/_tab_index = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Response:"
+script = ExtResource("2_iew7s")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_following = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "Send Message"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.59
+
+[node name="MessagePanel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MessagePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MessagePanel/VBoxContainer"]
+layout_mode = 2
+text = "Input
+"
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer/MessagePanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Put your message here"
+wrap_mode = 1
+
+[node name="LmStudioEmbeddings" type="Node" parent="."]
+script = ExtResource("2_vv2w6")
+debug = true
+
+[connection signal="pressed" from="Button" to="." method="_on_submit_response"]
+[connection signal="on_failure" from="LmStudioEmbeddings" to="." method="_on_lm_studio_embeddings_on_failure"]
+[connection signal="on_success" from="LmStudioEmbeddings" to="." method="_on_recieve_embeddings_response"]

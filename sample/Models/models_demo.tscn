@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctnq6ox1du2in"]
+
+[ext_resource type="Script" path="res://sample/Models/response_label.gd" id="1_oib28"]
+[ext_resource type="Script" path="res://addons/lm_studio_api/lib/models.gd" id="2_2pjks"]
+[ext_resource type="Script" path="res://addons/lm_studio_api/lib/config.gd" id="3_3eab6"]
+
+[sub_resource type="Resource" id="Resource_pel5v"]
+script = ExtResource("3_3eab6")
+api_root = ""
+
+[node name="Models Demo" type="VBoxContainer"]
+metadata/_tab_index = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Response:"
+script = ExtResource("1_oib28")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "Fetch Models"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.21
+
+[node name="LMStudioModels" type="Node" parent="."]
+script = ExtResource("2_2pjks")
+debug = true
+config = SubResource("Resource_pel5v")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="LMStudioModels"]
+download_file = "http://localhost:1234/v1/models"
+
+[connection signal="pressed" from="Button" to="LMStudioModels" method="request"]
+[connection signal="on_success" from="LMStudioModels" to="Label" method="set_text_to_response"]

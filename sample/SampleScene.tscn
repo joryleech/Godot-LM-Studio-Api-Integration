@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpuym8ea7frha"]
+
+[ext_resource type="PackedScene" uid="uid://ctnq6ox1du2in" path="res://sample/Models/models_demo.tscn" id="1_aux5q"]
+[ext_resource type="PackedScene" uid="uid://b52o46cc45rnh" path="res://sample/Completions/completion_demo.tscn" id="2_p5587"]
+[ext_resource type="PackedScene" uid="uid://b6pfk4ypdh635" path="res://sample/Embeddings/embeddings_demo.tscn" id="3_se164"]
+
+[node name="Node3D" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Completion Demo" parent="." instance=ExtResource("2_p5587")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Models Demo" parent="." instance=ExtResource("1_aux5q")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Embeddings Demo" parent="." instance=ExtResource("3_se164")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2

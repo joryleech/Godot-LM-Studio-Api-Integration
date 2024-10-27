@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpuym8ea7frha"]
+
+[ext_resource type="PackedScene" uid="uid://ctnq6ox1du2in" path="res://sample/Models/models_demo.tscn" id="1_aux5q"]
+[ext_resource type="PackedScene" uid="uid://b52o46cc45rnh" path="res://sample/Completions/completion_demo.tscn" id="2_p5587"]
+
+[node name="Node3D" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+current_tab = 1
+
+[node name="Models Demo" parent="." instance=ExtResource("1_aux5q")]
+visible = false
+layout_mode = 2
+
+[node name="Completion Demo" parent="." instance=ExtResource("2_p5587")]
+layout_mode = 2

@@ -1,0 +1,33 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[addons]
+
+lm_studio_api/api_key="http://127.0.0.1:1234"
+
+[application]
+
+config/name="Godot-LM-Studio-API-Integration"
+run/main_scene="res://sample/SampleScene.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+LmStudioApi="*res://addons/lm_studio_api/lm_studio_api.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/lm_studio_api/plugin.cfg")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
